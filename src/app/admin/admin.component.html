@@ -1,0 +1,112 @@
+
+<div class="container">
+  <h2>Product management</h2>
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addProduct">
+    Add new
+  </button>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Product ID</th>
+        <th>Product name</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Gender</th>
+        <th>Price</th>
+        <th>Size</th>
+        <th>Category</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="info" *ngFor="let product of products">
+        <td>{{ product.productId }}</td>
+        <td>{{ product.productName }}</td>
+        <td>{{ product.description }}</td>
+        <td><img width="70px" [src]="product.image" alt="" /></td>
+        <td>{{ product.genderFor }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.size }}</td>
+        <td>{{ product.category_id }}</td>
+        <td>
+          <button type="button" class="btn btn-info" data-toggle="modal" [routerLink]="'/admin/edit-product/' + product.productId"  data-target="#updateProduct">Edit </button>
+          <button type="button" class="btn btn-danger" (click)= "removeProduct(product.productId)"> Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+    <!-- Modal add product -->
+    <!-- The Modal -->
+    <div class="modal fade" id="addProduct">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="container">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Add product</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div [formGroup] = "formProduct" >
+                <div class="form-group">
+                  <label>Product name</label>
+                  <input type="name" formControlName="productName" class="form-control" placeholder="Product name">
+                </div>
+                <div class="form-group" >
+                  <label>Category</label><br/>
+
+                  <select formControlName="categoryId" style="width: 100%; height: 38px; border-radius: 7px;">
+                    <option *ngFor="let category of categories" value="{{ category.categoryId }}">{{ category.categoryName }}</option>
+                  </select>
+                  <!-- <input type="category" formControlName="categoryId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category"> -->
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <input type="description" formControlName="description" class="form-control" placeholder="Description">
+                </div>
+                <div class="form-group">
+                  <label>Gender</label><br/>
+                  <select formControlName="genderFor" class="option">
+                    <option value="Male">Male</option>
+                    <option value="Female" selected>Female</option>
+                  </select>
+                </div>
+                <div class="form-group" >
+                  <label>Size</label><br/>
+                  <select formControlName="size" class="option">
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41" selected>41</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Price</label>
+                  <input type="Price" formControlName="price" class="form-control">
+                </div>
+                  <div class="form-group">
+                    <label>Image</label><br/>
+                    <input type="file" formControlName="image"
+                    (change) ="handleFile($event.target.files)"
+                    >
+                  </div>
+                <button type="submit" class="btn btn-primary"  (click) = "createProduct()">Submit</button>
+              </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+

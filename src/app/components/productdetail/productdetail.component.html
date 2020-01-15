@@ -1,0 +1,40 @@
+<main>
+  <div class="breadcrumb container"><a class="previous-page" href="index.html">Trang ch&#x1EE7;</a><i class="fas fa-chevron-right arrow"></i><span class="current-page">S&#x1EA3;n ph&#x1EA9;m</span></div>
+  <div class="row">
+    <div class="col-3">
+      <div class="shop-content-wrapper container">
+        <div class="row">
+          <div class="filter-bar col-lg-3">
+            <div class="filter-header content">
+              <button class="clear-filter btn btn-primary">Bỏ lọc</button>
+            </div>
+            <div class="break-line"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <section class="products-showcase best-seller container col-9">
+      <div class="row">
+        <div class="title col-12">
+          <h2 class="h2">Sản phẩm bán chạy</h2>
+        </div>
+      </div>
+      <div class="row product-row d-flex justify-content-md-between" >
+        <a class="product position-relative col-3" href="product-details.html" *ngFor="let product of products">
+          <div class="card"><img class="card-img-top" [src]="product.image" alt="adidas-Yeezy-Boost-350-V2-Lundmark"/>
+            <div class="card-body">
+              <h5 class="card-title"> {{ product.productName }}</h5>
+              <p class="card-text price-desc">Price</p>
+              <p class="price">{{ product.price | currency : 'VND' : 'symbol' : '1.0-0' : 'vi'   }}</p>
+              <p class="card-text sold">{{ product.description }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+  </div>
+
+

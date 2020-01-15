@@ -1,0 +1,61 @@
+<!-- Update product -->
+<div class="container">
+  <h4 class="modal-title">Update product</h4>
+
+  <!-- Modal body -->
+  <div class="modal-body">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Product name</label>
+        <input type="text" [(ngModel)]="productName" name="productName" class="form-control" placeholder="Product Name" value="{{ product?.productName }}" >
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select [(ngModel)]="categoryId"  name="categoryId" class="option">
+          <option value="{{categoryName}}" [selected]='categoryName'>{{categoryName}}</option>
+          <option *ngFor="let category of categories" value="{{ category.categoryId }}">{{ category.categoryName }}</option>
+        </select>
+        <!-- <input type="category" formControlName="categoryId" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Category"> -->
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" [(ngModel)]="description" name="description"  class="form-control" placeholder="Description" value=" {{ product?.description }} ">
+      </div>
+      <div class="form-group">
+        <label>Gender</label>
+        <select [(ngModel)]="genderFor" name="genderFor" class="option">
+          <option value="{{ product?.genderFor }}" [selected]='product?.genderFor' >{{ product?.genderFor }} </option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="form-group" >
+        <label>Size</label>
+        <select [(ngModel)]="size" name="size" class="option">
+          <option value="{{ product?.size }}" [selected]='product?.size'>{{ product?.size }}</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input type="text" [(ngModel)]="price" name="price" class="form-control" >
+      </div>
+        <div class="form-group row">
+          <div class="col-8">
+            <label>Image</label>
+            <input type="file" name="image" (change)="uploadImg($event.target.files)">
+          </div>
+          <div class="col-3">
+            <img width="80px" [src]="product?.image" alt="shoe">
+          </div>
+
+        </div>
+
+      <button type="submit" class="btn btn-primary" (click)="updateProduct()">Submit</button>
+      </form>
+  </div>
+</div>
+

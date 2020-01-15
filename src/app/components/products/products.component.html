@@ -1,0 +1,32 @@
+<div class="content text-center p-5">
+  <div class="search-form justify-content-md-center d-flex" >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="search-input-wrapper">
+          <input class="form-control search-input col-sm-5" type="text" placeholder="Bạn cần tìm gì..."/>
+          <button class="btn btn-primary text-uppercase red-btn search-button" type="submit"><i class="fas fa-search">Search</i></button>
+          <div class="search-result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="products-showcase best-seller container">
+  <div class="row">
+    <div class="title col-12">
+      <h2 class="h2">Sản phẩm bán chạy</h2><a class="see-more-btn-text text-uppercase" href="shop.html">Xem Th&ecirc;m</a>
+    </div>
+  </div>
+  <div class="row product-row d-flex justify-content-md-between" >
+    <a class="product position-relative col-3" href="product-details.html" *ngFor="let product of products">
+      <div class="card"><img class="card-img-top" [src]="product.image" alt="adidas-Yeezy-Boost-350-V2-Lundmark"/>
+        <div class="card-body">
+          <h5 class="card-title"> {{ product.productName }}</h5>
+          <p class="card-text price-desc">Price</p>
+          <p class="price">{{ product.price | currency : 'VND' : 'symbol' : '1.0-0' : 'vi'   }}</p>
+          <p class="card-text sold">{{ product.description }}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
